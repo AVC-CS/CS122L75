@@ -2,8 +2,9 @@ import main
 import io
 import sys
 import re
+import pytest
 
-
+@pytest.mark.basic
 def test_main_1():
     captureOut = io.StringIO()
     sys.stdout = captureOut
@@ -23,7 +24,7 @@ def test_main_1():
 
     assert ret == 2
 
-
+@pytest.mark.edge
 def test_main_2():
     captureOut = io.StringIO()
     sys.stdout = captureOut
@@ -42,3 +43,9 @@ def test_main_2():
     print(f'Your return value is {ret}')
 
     assert ret == 3
+
+@pytest.mark.bonus
+def test_main_3():
+    numbers = [5, 5, 5, 5, 5]
+    ret = main.findMost(numbers)
+    assert ret == 5 
